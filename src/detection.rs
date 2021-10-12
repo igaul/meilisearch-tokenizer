@@ -26,6 +26,7 @@ pub fn is_latin(ch: char) -> bool {
     matches!(ch,
         'a'..='z'
         | 'A'..='Z'
+        | '.'
         | '\u{0080}'..='\u{00FF}'
         | '\u{0100}'..='\u{017F}'
         | '\u{0180}'..='\u{024F}'
@@ -49,7 +50,7 @@ pub fn classify_separator(c: char) -> Option<SeparatorKind> {
         '-' | '_' | '\'' | ':' | '/' | '\\' | '@' | '"' | '+' | '~' | '=' | '^' | '*' | '#' => {
             Some(SeparatorKind::Soft)
         }
-        '.' | ';' | ',' | '!' | '?' | '(' | ')' | '[' | ']' | '{' | '}' | '|' => {
+        ';' | ',' | '!' | '?' | '(' | ')' | '[' | ']' | '{' | '}' | '|' => {
             Some(SeparatorKind::Hard)
         }
         _ => None,
